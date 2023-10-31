@@ -7,8 +7,9 @@ const App = () => {
    <main className="flex h-screen">
       <Routes>
         {/* public routes */}
-
+          <Route path="/sign-in" element={<SigningForm />} />
         {/* private routes */}
+        <Route index element={<Home />} />
       </Routes>
    </main>
   )
