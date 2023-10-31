@@ -1,8 +1,16 @@
+import { Routes, Route } from 'react-router-dom';
+
 import './globals.css'
 
 const App = () => {
   return (
-    <div className="text-3xl font-bold underline">Hello</div>
+   <main className="flex h-screen">
+      <Routes>
+        {/* public routes */}
+
+        {/* private routes */}
+      </Routes>
+   </main>
   )
 }
 
