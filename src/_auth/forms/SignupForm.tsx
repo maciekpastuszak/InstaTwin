@@ -91,7 +91,7 @@ const isLoading = true;
             )}
           />
           <Button type="submit" className="shad-button_primary">
-            {isLoading && (
+            {isLoading ? (
               <div className="flex center gap-2">
                 Loading...
               </div>
