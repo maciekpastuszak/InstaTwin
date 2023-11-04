@@ -1,9 +1,8 @@
-import React from 'react'
 
-const loader = () => {
+const Loader = () => {
   return (
-    <div>loader</div>
+    <div>Loader</div>
   )
 }
 
-export default loader
+export default Loader
