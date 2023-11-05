@@ -6,11 +6,12 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
 import { SignupValidation } from "@/lib/validation"
+import Loader from "@/components/ui/shared/Loader"
 
 
 
 const SignupForm = () => {
-const isLoading = true;
+const isLoading = false;
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof SignupValidation>>({
@@ -93,7 +94,7 @@ const isLoading = true;
           <Button type="submit" className="shad-button_primary">
             {isLoading ? (
               <div className="flex center gap-2">
-                Loading...
+                <Loader /> Loading...
               </div>
             ): "Sign up"}
           </Button>
