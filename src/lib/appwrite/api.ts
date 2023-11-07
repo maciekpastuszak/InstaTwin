@@ -13,11 +13,23 @@ export async function createUserAccount(user: INewUser) {
 
         if(!newAccount) throw Error;
 
-        const avatarUrl = avatars.getInitials(user.name)
+        const avatarUrl = avatars.getInitials(user.name);
+
+       // const newUser = await saveUserToDB()
 
         return newAccount
     } catch (error) {
         console.log(error);
         return error;
     }
+}
+
+export async function saveUserToDB(user: {
+    accountId: string;
+    email: string;
+    name: string;
+    imageUrl: URL;
+    username?: string
+}) {
+
 }
