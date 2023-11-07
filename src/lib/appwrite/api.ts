@@ -1,4 +1,6 @@
 import { INewUser } from "@/types";
+import { ID } from "appwrite";
+import { account } from "./config";
 
 export async function createUserAccount(user: INewUser) {
     try {
