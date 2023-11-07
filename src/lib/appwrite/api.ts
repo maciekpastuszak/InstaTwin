@@ -1,6 +1,6 @@
 import { INewUser } from "@/types";
 import { ID } from "appwrite";
-import { account } from "./config";
+import { account, avatars } from "./config";
 
 export async function createUserAccount(user: INewUser) {
     try {
@@ -9,7 +9,11 @@ export async function createUserAccount(user: INewUser) {
             user.email,
             user.password,
             user.name
-        )
+        );
+
+        if(!newAccount) throw Error;
+
+        const avatarUrl = avatars.getInitials(user.name)
 
         return newAccount
     } catch (error) {
