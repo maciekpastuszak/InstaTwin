@@ -1,6 +1,6 @@
 import { INewUser } from "@/types";
 import { ID } from "appwrite";
-import { account, avatars } from "./config";
+import { account, appwriteConfig, avatars, databases } from "./config";
 
 export async function createUserAccount(user: INewUser) {
     try {
@@ -38,5 +38,16 @@ export async function saveUserToDB(user: {
     imageUrl: URL;
     username?: string
 }) {
+    try {
+        const newUser = await databases.createDocument(
+            appwriteConfig.databaseId,
+            appwriteConfig.userCollectionId,
+            ID.unique(),
+            user
+        )
 
+        return newUser
+    } catch (error) {
+        console.log(error)
+    }
 }
