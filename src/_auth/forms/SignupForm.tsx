@@ -34,7 +34,9 @@ const isLoading = false;
       // create the user
       const newUser = await createUserAccount(values);
       if(!newUser) {
-        return;
+        return toast({
+          title: "Sign up failed. Please try again", 
+        });
       }
     }
 
