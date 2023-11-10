@@ -26,7 +26,9 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  const checkAuthUser = () => {};
+  const checkAuthUser = () => {
+
+  };
 
   const value = {
     user,
@@ -37,9 +39,9 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
     checkAuthUser
   }
   return (
-    <AuthContext.Proveder value={value}>
+    <AuthContext.Provider value={value}>
       {children}
-    </AuthContext.Proveder>
+    </AuthContext.Provider>
   )
 }
 
