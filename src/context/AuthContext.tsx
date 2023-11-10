@@ -18,7 +18,11 @@ const INITIAL_STATE = {
     checkAuthUser: async () => false as boolean,
 }
 
-const AuthContext = () => {
+const AuthContext = createContext<IContextType>(INITIAL_STATE)
+
+const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
+  const [user, setUser] = useState<>(INITIAL_USER)
+
   return (
     <div>AuthContext</div>
   )
