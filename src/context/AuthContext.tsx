@@ -27,7 +27,14 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const checkAuthUser = () => {
-
+    try {
+      const currentAccount = await getCurrentUser();
+    } catch (error) {
+      console.log(error);
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const value = {
