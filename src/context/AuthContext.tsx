@@ -26,8 +26,20 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
+  const checkAuthUser = () => {};
+
+  const value = {
+    user,
+    setUser,
+    isLoading,
+    isAuthenticated,
+    setIsAuthenticated,
+    checkAuthUser
+  }
   return (
-    <div>AuthContext</div>
+    <AuthContext.Proveder value={value}>
+      {children}
+    </AuthContext.Proveder>
   )
 }
 
