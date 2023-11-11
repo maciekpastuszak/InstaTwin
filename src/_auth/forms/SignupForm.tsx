@@ -60,7 +60,7 @@ const { mutateAsync: signInAccount, isLoading: isSigningIn } = useSignInAccount(
 
       navigate('/')
      } else {
-      toast({ title: 'Sign up failed. Please try again.'})
+      return toast({ title: 'Sign up failed. Please try again.'})
      }
     }
 
