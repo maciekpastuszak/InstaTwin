@@ -11,11 +11,13 @@ import { SignupValidation } from "@/lib/validation"
 import Loader from "@/components/ui/shared/Loader"
 import { Link } from "react-router-dom"
 import { useCreateUserAccount } from "@/lib/react-query/queriesAndMutations"
+import { useUserContext } from "@/context/AuthContext"
 
 
 
 const SignupForm = () => {
   const { toast } = useToast();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
 const { mutateAsync: createUserAccount, isLoading: isCreatingUser } = useCreateUserAccount()
 
@@ -49,6 +51,8 @@ const { mutateAsync: signInAccount, isLoading: isSigningIn } = useSignInAccount(
      if (!session) {
       return toast({ title: "Sign in failed. Please try again." })
      }
+
+     const isLoggedIn = await checkAuthUser();
     }
 
   return (
