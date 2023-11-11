@@ -1,6 +1,7 @@
 import { GetCurrentUser } from "@/lib/appwrite/api";
 import { IUser } from "@/types";
 import { createContext, useContext, useEffect, useState } from "react"
+import { nullable } from "zod";
 
 export const INITIAL_USER = {
     id: '',
@@ -45,6 +46,8 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
 
         return true;
       }
+
+      return false;
     } catch (error) {
       console.log(error);
       return false;
@@ -52,6 +55,14 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if(
+      localStorage.getItem('cookieFallback' === '[]' ||
+      localStorage.getItem('cookieFallback') === null)
+    )
+  }, [])
+  
 
   const value = {
     user,
