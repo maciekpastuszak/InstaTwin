@@ -30,7 +30,7 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
 
   const navigate = useNavigate();
 
-  const checkAuthUser = () => {
+  const checkAuthUser = async () => {
     try {
       const currentAccount = await GetCurrentUser();
 
