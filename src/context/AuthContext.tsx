@@ -39,8 +39,11 @@ const AuthProvider = ( {children}: { children: React.ReactNode } ) => {
           email: currentAccount.email,
           imageUrl: currentAccount.imageUrl,
           bio: currentAccount.bio
-
         })
+
+        setIsAuthenticated(true);
+
+        return true;
       }
     } catch (error) {
       console.log(error);
