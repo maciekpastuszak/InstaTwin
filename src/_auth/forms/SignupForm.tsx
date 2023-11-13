@@ -10,15 +10,15 @@ import { useForm } from "react-hook-form"
 import { SignupValidation } from "@/lib/validation"
 import Loader from "@/components/ui/shared/Loader"
 import { Link, useNavigate } from "react-router-dom"
-import { useCreateUserAccount } from "@/lib/react-query/queriesAndMutations"
+import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/queriesAndMutations"
 import { useUserContext } from "@/context/AuthContext"
 
 
 
 const SignupForm = () => {
   const { toast } = useToast();
-  const { checkAuthUser, isPending: isUserLoading } = useUserContext();
   const navigate = useNavigate();
+  const { checkAuthUser, isPending: isUserLoading } = useUserContext();
 
 const { mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUserAccount()
 
