@@ -20,7 +20,7 @@ const SignupForm = () => {
   const { checkAuthUser, isPending: isUserLoading } = useUserContext();
   const navigate = useNavigate();
 
-const { mutateAsync: createUserAccount, isPending: isCreatingUser } = useCreateUserAccount()
+const { mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUserAccount()
 
 const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount();
     // 1. Define your form.
@@ -125,7 +125,7 @@ const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount(
             )}
           />
           <Button type="submit" className="shad-button_primary">
-            {isCreatingUser ? (
+            {isCreatingAccount ? (
               <div className="flex center gap-2">
                 <Loader /> Loading...
               </div>
