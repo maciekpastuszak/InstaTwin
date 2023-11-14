@@ -91,15 +91,15 @@ const { mutateAsync: signInAccount, isPending } = useSignInAccount();
               <div className="flex center gap-2">
                 <Loader /> Loading...
               </div>
-            ): "Sign up"}
+            ): "Sign in"}
           </Button>
 
           <p className="text-small-regular text-light-2 text-center mt-2">
-            Already have an account?
+            Don't have an account?
             <Link
-              to="/sign-in"
+              to="/sign-un"
               className="text-primary-500 text-small-semibold ml-1">
-              Log in
+              Sign up
             </Link>
           </p>
 
