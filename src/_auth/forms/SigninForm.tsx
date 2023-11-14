@@ -7,7 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
-import { SignupValidation } from "@/lib/validation"
+import { SignupValidation as SigninValidation } from "@/lib/validation"
 import Loader from "@/components/ui/shared/Loader"
 import { Link, useNavigate } from "react-router-dom"
 import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/queriesAndMutations"
@@ -20,30 +20,18 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { checkAuthUser, isPending: isUserLoading } = useUserContext();
 
-const { mutateAsync: createUserAccount, isPending: isCreatingAccount } = useCreateUserAccount()
-
 const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount();
     // 1. Define your form.
-    const form = useForm<z.infer<typeof SignupValidation>>({
-      resolver: zodResolver(SignupValidation),
+    const form = useForm<z.infer<typeof SigninValidation>>({
+      resolver: zodResolver(SigninValidation),
       defaultValues: {
-        name: "",
-        username: "",
         email: "",
         password: ""
       },
     })
    
     // 2. Define a submit handler.
-    async function onSubmit(values: z.infer<typeof SignupValidation>) {
-      // create the user
-      const newUser = await createUserAccount(values);
-      if(!newUser) {
-        return toast({
-          title: "Sign up failed. Please try again", 
-        });
-      }
-
+    async function onSubmit(values: z.infer<typeof SigninValidation>) {
      const session = await signInAccount({
       email: values.email,
       password: values.password
