@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form"
 import { SignupValidation as SigninValidation } from "@/lib/validation"
 import Loader from "@/components/ui/shared/Loader"
 import { Link, useNavigate } from "react-router-dom"
-import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/queriesAndMutations"
+import { useSignInAccount } from "@/lib/react-query/queriesAndMutations"
 import { useUserContext } from "@/context/AuthContext"
 
 
@@ -20,7 +20,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { checkAuthUser, isPending: isUserLoading } = useUserContext();
 
-const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount();
+const { mutateAsync: signInAccount, isPending } = useSignInAccount();
     // 1. Define your form.
     const form = useForm<z.infer<typeof SigninValidation>>({
       resolver: zodResolver(SigninValidation),
@@ -62,32 +62,6 @@ const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount(
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">
           <FormField
             control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
@@ -113,7 +87,7 @@ const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount(
             )}
           />
           <Button type="submit" className="shad-button_primary">
-            {isCreatingAccount ? (
+            {isUserLoading ? (
               <div className="flex center gap-2">
                 <Loader /> Loading...
               </div>
