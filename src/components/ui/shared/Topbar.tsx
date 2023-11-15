@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { Button } from "../button"
 
 const Topbar = () => {
   return (
@@ -12,6 +13,12 @@ const Topbar = () => {
             height={325}
           />
         </Link>
+
+        <div className="flex gap-4">
+          <Button variant="ghost" className="shad_button_ghost" onClick={signOut}
+            <img src="/assets/icons/logout.svg" alt="logout" />
+          </Button>
+        </div>
       </div>
     </section>
   )
