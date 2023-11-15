@@ -2,7 +2,13 @@ import React from 'react'
 
 const Topbar = () => {
   return (
-    <div>Topbar</div>
+    <section className="topbar">
+      <div className="flex-between py-4 px-5">
+        <Link>
+        
+        </Link>
+      </div>
+    </section>
   )
 }
 
