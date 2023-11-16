@@ -1,8 +1,11 @@
-import React from 'react'
-
 const LeftSidebar = () => {
   return (
-    <div>LeftSidebar</div>
+    <nav className="leftsidebar">
+      <div className="flex flex-col gap-11">
+        <Link>
+        </Link>
+      </div>
+    </nav>
   )
 }
 
