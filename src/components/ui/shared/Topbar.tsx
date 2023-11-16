@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 import { Button } from "../button"
+import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations"
 
 const Topbar = () => {
+  const { mutate: signOut, isSuccess } = useSignOutAccount();
+
   return (
     <section className="topbar">
       <div className="flex-between py-4 px-5">
@@ -15,7 +18,7 @@ const Topbar = () => {
         </Link>
 
         <div className="flex gap-4">
-          <Button variant="ghost" className="shad-button_ghost" onClick={signOut}
+          <Button variant="ghost" className="shad-button_ghost" onClick={signOut}>
             <img src="/assets/icons/logout.svg" alt="logout" />
           </Button>
         </div>
