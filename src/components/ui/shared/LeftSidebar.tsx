@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { Button } from "../button"
+import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations"
+import { useEffect } from "react";
+import { useUserContext } from "@/context/AuthContext";
 
 const LeftSidebar = () => {
+  const { mutate: signOut, isSuccess } = useSignOutAccount();
+  const navigate = useNavigate();
+  const { user } = useUserContext();
+
+  useEffect(() => {
+    if (isSuccess) navigate(0);
+  }, [isSuccess])
+  
   return (
     <nav className="leftsidebar">
       <div className="flex flex-col gap-11">
@@ -11,6 +23,10 @@ const LeftSidebar = () => {
             width={170}
             height={36}
           />
+        </Link>
+
+        <Link to={`/profile/${user.id}`}>
+        
         </Link>
       </div>
     </nav>
