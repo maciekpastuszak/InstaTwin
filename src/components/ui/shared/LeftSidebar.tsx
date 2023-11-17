@@ -25,8 +25,10 @@ const LeftSidebar = () => {
           />
         </Link>
 
-        <Link to={`/profile/${user.id}`}>
-        
+        <Link to={`/profile/${user.id}`}
+        className="flex gap-3 items-center"
+        >
+          <img src={user.imageUrl || "assets/icons/profile-placeholder.svg"} alt="" />
         </Link>
       </div>
     </nav>
