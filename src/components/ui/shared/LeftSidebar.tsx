@@ -32,6 +32,11 @@ const LeftSidebar = () => {
           alt="profile" 
           className="h-14 w-14 rounded-full"
           />
+          <div className="flex flex-col">
+            <p className="body-bold">
+              {user.name}
+            </p>
+          </div>
         </Link>
       </div>
     </nav>
