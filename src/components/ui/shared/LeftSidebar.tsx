@@ -50,6 +50,7 @@ const LeftSidebar = () => {
               <li key={link.label} className="leftsidebar-link">
                 <NavLink
                   to={link.route}
+                  className="flex gap-4 items-center p-4"
                 >
                   {link.label}
                 </NavLink>
