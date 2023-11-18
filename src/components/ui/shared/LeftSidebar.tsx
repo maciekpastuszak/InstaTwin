@@ -74,7 +74,7 @@ const LeftSidebar = () => {
         className="shad-button_ghost" 
         onClick={() => signOut()}>
         <img src="/assets/icons/logout.svg" alt="logout" />
-          <p className="small-medium lg:basd-medium">Logout</p>
+          <p className="small-medium lg:based-medium">Logout</p>
       </Button>
 
     </nav>
