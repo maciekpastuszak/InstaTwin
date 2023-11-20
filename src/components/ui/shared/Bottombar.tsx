@@ -13,12 +13,12 @@ const Bottombar = () => {
                 <Link
                   to={link.route}
                   key={link.label} 
-                  className={`bottombar-link group ${isActive && 'bg-primary-500'}`}
+                  className={`${isActive && 'bg-primary-500 rounded-[10px]'} flex-center flex-cl gap-1 p-2 transition`}
                 >
                   <img 
                     src={link.imgURL} 
                     alt={link.label} 
-                    className={`group-hover:invert-white ${isActive && 'invert-white'}`}
+                    className={`${isActive && 'invert-white'}`}
                   />
                   {link.label}
                 </Link>
