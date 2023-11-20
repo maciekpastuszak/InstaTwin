@@ -1,16 +1,18 @@
+import { bottombarLinks } from '@/constants';
 import { Link, useLocation } from 'react-router-dom';
 
 const Bottombar = () => {
-  const { pathName } = useLocation();
+  const { pathname } = useLocation();
+
   return (
    <section className="bottom-bar">
-      {sidebarLinks.map((link: INavLink) => {
+      {bottombarLinks.map((link) => {
             const isActive = pathname === link.route;
             
             return (
               <li key={link.label} 
               className={`leftsidebar-link group ${isActive && 'bg-primary-500'}`}>
-                <NavLink
+                <Link
                   to={link.route}
                   className="flex gap-4 items-center p-4"
                 >
@@ -20,10 +22,12 @@ const Bottombar = () => {
                     className={`group-hover:invert-white ${isActive && 'invert-white'}`}
                   />
                   {link.label}
-                </NavLink>
+                </Link>
               </li>
             )
-        )}
+        })
+      }
+        
    </section>
   )
 }
