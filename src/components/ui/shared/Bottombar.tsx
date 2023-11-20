@@ -10,11 +10,10 @@ const Bottombar = () => {
             const isActive = pathname === link.route;
             
             return (
-              <li key={link.label} 
-              className={`leftsidebar-link group ${isActive && 'bg-primary-500'}`}>
                 <Link
                   to={link.route}
-                  className="flex gap-4 items-center p-4"
+                  key={link.label} 
+                  className={`bottombar-link group ${isActive && 'bg-primary-500'}`}
                 >
                   <img 
                     src={link.imgURL} 
@@ -23,7 +22,6 @@ const Bottombar = () => {
                   />
                   {link.label}
                 </Link>
-              </li>
             )
         })
       }
