@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
 import {
   Form,
   FormControl,
@@ -38,20 +39,17 @@ const PostForm = () => {
   }
   return (
     <Form {...form}>
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-9 w-full max-w-5xl">
       <FormField
         control={form.control}
-        name="username"
+        name="caption"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Username</FormLabel>
+            <FormLabel className="shad-form_label">Caption</FormLabel>
             <FormControl>
-              <Input placeholder="shadcn" {...field} />
+              <Textarea className="shad-textare custom-scrollbar" {...field} />
             </FormControl>
-            <FormDescription>
-              This is your public display name.
-            </FormDescription>
-            <FormMessage />
+            <FormMessage className="shad-form_message" />
           </FormItem>
         )}
       />
