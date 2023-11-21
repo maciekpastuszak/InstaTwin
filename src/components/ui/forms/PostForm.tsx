@@ -53,6 +53,20 @@ const PostForm = () => {
           </FormItem>
         )}
       />
+
+      <FormField
+        control={form.control}
+        name="file"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="shad-form_label">Add Photos</FormLabel>
+            <FormControl>
+              <FileUploader />
+            </FormControl>
+            <FormMessage className="shad-form_message" />
+          </FormItem>
+        )}
+      />
       <Button type="submit">Submit</Button>
     </form>
   </Form>
