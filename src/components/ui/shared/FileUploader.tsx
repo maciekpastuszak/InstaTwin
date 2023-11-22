@@ -17,10 +17,10 @@ const FileUploader = () => {
         fileUrl ? (
           <div>test 1</div>
         ) : (
-          <div>test 2</div>
+          <div className="file_uploader-box">
+            <img src="/assets/icons/file-upload.svg" width={96} height={77} alt="file-upload" />
+          </div>
         )
-          <p>Drop the files here ...</p> :
-          <p>Drag 'n' drop some files here, or click to select files</p>
       }
     </div>
   )
