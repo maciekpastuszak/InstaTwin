@@ -95,8 +95,12 @@ const PostForm = () => {
             <FormMessage className="shad-form_message" />
           </FormItem>
         )}
-      />  
-      <Button type="submit">Submit</Button>
+      /> 
+
+      <div>
+        <Button type="button" className="shad-button_dark_4">Cancel</Button>
+        <Button type="submit" className="shad button_primary whitespace-nowrap" >Submit</Button>
+      </div> 
     </form>
   </Form>
   )
