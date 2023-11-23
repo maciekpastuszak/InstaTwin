@@ -9,7 +9,12 @@ const FileUploader = () => {
     // Do something with the files
   }, [])
 
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      'image/*' : ['.png', 'jpeg', 'jpg', '.svg']
+    }
+  })
 
   return (
      <div {...getRootProps()} className="fkex flex-center flex-col bg-dark-3 rounded-xl cursor-pointer">
