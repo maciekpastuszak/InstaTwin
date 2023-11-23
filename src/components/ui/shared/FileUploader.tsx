@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { Button } from '../button';
 
 const FileUploader = () => {
   const [fileUrl, setFileUrl] = useState("");
@@ -21,6 +22,10 @@ const FileUploader = () => {
             <img src="/assets/icons/file-upload.svg" width={96} height={77} alt="file-upload" />
             <h3 className="base-medium text-light-2 mb-2 mt-6">Drag photo here</h3>
             <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
+          
+            <Button className="shad-button_dark_4">
+              Select from computer
+            </Button>
           </div>
         )
       }
