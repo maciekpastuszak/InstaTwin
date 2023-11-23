@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { FileWithPath, useDropzone } from 'react-dropzone'
 import { Button } from '../button';
 
-type FileUploaderProps {
+type FileUploaderProps = {
   fieldChange: (FILES: File[]) => void;
   mediaUrl: string;
 }
