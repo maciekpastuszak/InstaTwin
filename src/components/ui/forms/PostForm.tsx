@@ -11,6 +11,7 @@ import FileUploader from "../shared/FileUploader"
 import { PostValidation } from "@/lib/validation"
 import { Models } from "appwrite"
 import { useUserContext } from "@/context/AuthContext"
+import { useToast } from "../use-toast"
 
 
 type PostFormProps = {
@@ -20,6 +21,7 @@ type PostFormProps = {
 const PostForm = ({ post }: PostFormProps) => {
   const { mutateAsync: createPost, isPending: isLoadingCreate } = useCreatePost();
   const { user } = useUserContext()
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -37,6 +39,12 @@ const PostForm = ({ post }: PostFormProps) => {
       ...values,
       userId: user.id,
     })
+
+    if(!newPost){
+      toast({
+        title: 'Please try again'
+      })
+    }
   }
   return (
     <Form {...form}>
