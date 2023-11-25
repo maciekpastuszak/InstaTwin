@@ -5,14 +5,7 @@ import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import FileUploader from "../shared/FileUploader"
 import { PostValidation } from "@/lib/validation"
@@ -24,6 +17,7 @@ type PostFormProps = {
 }
 
 const PostForm = ({ post }: PostFormProps) => {
+  const { mutateAsync: createPost, isPending: isLoadingCreate } = useCreatePost();
       // 1. Define your form.
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -37,9 +31,10 @@ const PostForm = ({ post }: PostFormProps) => {
  
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof PostValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+    const newPost = await createPost({
+      ...values,
+      userId: user.Id,
+    })
   }
   return (
     <Form {...form}>
