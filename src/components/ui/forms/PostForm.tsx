@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,14 +16,14 @@ import {
 import { Input } from "@/components/ui/input"
 import FileUploader from "../shared/FileUploader"
 import { PostValidation } from "@/lib/validation"
- 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
+import { Models } from "appwrite"
 
-const PostForm = ({ post }) => {
+
+type PostFormProps = {
+  post?: Models.Document;
+}
+
+const PostForm = ({ post }: PostFormProps) => {
       // 1. Define your form.
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
