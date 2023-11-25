@@ -1,6 +1,6 @@
 import { INewPost, INewUser } from "@/types";
 import { ID, Query } from "appwrite";
-import { account, appwriteConfig, avatars, databases } from "./config";
+import { account, appwriteConfig, avatars, databases, storage } from "./config";
 
 export async function createUserAccount(user: INewUser) {
     try {
@@ -96,6 +96,14 @@ export async function createPost(post: INewPost) {
     try {
         //upload image to storage
         const uploadedFile = await uploadFile(post.file[0]);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function uploadFile(file: File) {
+    try {
+        const uploadedFile = await storage.createFile();
     } catch (error) {
         console.log(error)
     }
