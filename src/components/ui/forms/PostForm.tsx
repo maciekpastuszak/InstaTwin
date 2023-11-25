@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import FileUploader from "../shared/FileUploader"
 import { PostValidation } from "@/lib/validation"
 import { Models } from "appwrite"
+import { useUserContext } from "@/context/AuthContext"
 
 
 type PostFormProps = {
@@ -18,7 +19,8 @@ type PostFormProps = {
 
 const PostForm = ({ post }: PostFormProps) => {
   const { mutateAsync: createPost, isPending: isLoadingCreate } = useCreatePost();
-      // 1. Define your form.
+  const { user } = useUserContext()
+  // 1. Define your form.
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
     defaultValues: {
@@ -33,7 +35,7 @@ const PostForm = ({ post }: PostFormProps) => {
   function onSubmit(values: z.infer<typeof PostValidation>) {
     const newPost = await createPost({
       ...values,
-      userId: user.Id,
+      userId: user.id,
     })
   }
   return (
