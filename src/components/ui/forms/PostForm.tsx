@@ -83,7 +83,7 @@ const PostForm = ({ post }) => {
           <FormItem>
             <FormLabel className="shad-form_label">Add Location Photos</FormLabel>
             <FormControl>
-              <Input type="text" className="shad-input"/>
+              <Input type="text" className="shad-input" {...field}/>
             </FormControl>
             <FormMessage className="shad-form_message" />
           </FormItem>
@@ -97,7 +97,7 @@ const PostForm = ({ post }) => {
           <FormItem>
             <FormLabel className="shad-form_label">Add Tags (separated by coma " , ") </FormLabel>
             <FormControl>
-              <Input type="text" className="shad-input" placeholder="JS, React, NextJS" />
+              <Input type="text" className="shad-input" placeholder="JS, React, NextJS" {...field} />
             </FormControl>
             <FormMessage className="shad-form_message" />
           </FormItem>
