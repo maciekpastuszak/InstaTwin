@@ -119,3 +119,11 @@ export async function uploadFile(file: File) {
         console.log(error)
     }
 }
+
+export async function getFilePreview(fileId: string){
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
