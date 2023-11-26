@@ -142,3 +142,13 @@ export async function getFilePreview(fileId: string){
         console.log(error);
     }
 }
+
+export async function deleteFile(fileId: string) {
+    try {
+     await storage.deleteFile(appwriteConfig.storageId, fileId);
+     
+     return {status: 'ok'}
+    } catch (error) {
+        console.log(error)
+    }
+};
