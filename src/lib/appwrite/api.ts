@@ -122,6 +122,13 @@ export async function createPost(post: INewPost) {
                 tags: tags
             }
         )
+
+        if(!newPost) {
+            await deleteFile(uploadFile.$id)
+            throw Error;
+        }
+
+        return newPost
     } catch (error) {
         console.log(error)
     }
