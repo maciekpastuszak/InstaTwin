@@ -106,7 +106,10 @@ export async function createPost(post: INewPost) {
             deleteFile(uploadFile.$id);
             throw Error;
         }
+        // Convert tags in an array
+        const tags = post.tags?.replace(/ /g,'').split(',') || [];
 
+        //save post to db
     } catch (error) {
         console.log(error)
     }
