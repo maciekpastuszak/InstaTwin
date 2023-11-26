@@ -103,7 +103,13 @@ export async function createPost(post: INewPost) {
 
 export async function uploadFile(file: File) {
     try {
-        const uploadedFile = await storage.createFile();
+        const uploadedFile = await storage.createFile(
+            appwriteConfig.storageId,
+            ID.unique(),
+            file
+        );
+
+        return uploadedFile;
     } catch (error) {
         console.log(error)
     }
