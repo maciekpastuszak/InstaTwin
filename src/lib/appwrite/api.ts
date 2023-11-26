@@ -96,6 +96,11 @@ export async function createPost(post: INewPost) {
     try {
         //upload image to storage
         const uploadedFile = await uploadFile(post.file[0]);
+    
+        if(!uploadFile) throw Error;
+
+        //get file url
+        const fileUrl = getFilePreview(uploadedFile.$id)
     } catch (error) {
         console.log(error)
     }
