@@ -97,13 +97,13 @@ export async function createPost(post: INewPost) {
         //upload image to storage
         const uploadedFile = await uploadFile(post.file[0]);
     
-        if(!uploadFile) throw Error;
+        if(!uploadedFile) throw Error;
 
         //get file url
         const fileUrl = getFilePreview(uploadedFile.$id);
 
         if (!fileUrl) {
-            deleteFile(uploadFile.$id);
+            deleteFile(uploadedFile.$id);
             throw Error;
         }
         // Convert tags in an array
@@ -117,14 +117,14 @@ export async function createPost(post: INewPost) {
             {
                 creator: post.userId,
                 caption: post.caption,
-                imageUrl: uploadFile.$id,
+                imageUrl: uploadedFile.$id,
                 location: post.location,
                 tags: tags
             }
         )
 
         if(!newPost) {
-            await deleteFile(uploadFile.$id)
+            await deleteFile(uploadedFile.$id)
             throw Error;
         }
 
