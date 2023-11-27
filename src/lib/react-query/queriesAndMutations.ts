@@ -34,7 +34,7 @@ export const useCreatePost = () => {
         mutationFn: (post: INewPost) => createPost(post),
         onSuccess: () => {
             queryClient.invalidateQueries(
-                queryKey: 'getRecentPosts'
+                queryKey: [QUERY_KEYS.GET_RECENT_POSTS]
             )
         }
     })
