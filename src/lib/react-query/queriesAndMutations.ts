@@ -29,7 +29,13 @@ export const useSignOutAccount = () => {
 }
 
 export const useCreatePost = () => {
+    const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: (post: INewPost) => createPost(post)
+        mutationFn: (post: INewPost) => createPost(post),
+        onSuccess: () => {
+            queryClient.invalidateQueries(
+                queryKey: 'getRecentPosts'
+            )
+        }
     })
 }
