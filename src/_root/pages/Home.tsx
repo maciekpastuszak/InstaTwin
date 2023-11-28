@@ -1,8 +1,9 @@
 import Loader from '@/components/ui/shared/Loader';
+import { useGetRecentPosts } from '@/lib/react-query/queriesAndMutations';
 import React from 'react'
 
 const Home = () => {
-const isPostLoading = true;
+  const { data: posts, isPending: isPostLoading, isError: isErrorPosts } = useGetRecentPosts();
 
   return (
     <div className="flex flex-1">
@@ -13,7 +14,7 @@ const isPostLoading = true;
           <Loader />
           ) : (
             <ul>
-              //posts
+              TEST
             </ul>
           )}
         </div>
