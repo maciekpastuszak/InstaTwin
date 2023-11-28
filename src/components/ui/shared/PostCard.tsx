@@ -6,7 +6,13 @@ type PostCardProps = {
 
 const PostCard = ({ post }: PostCardProps) => {
   return (
-    <div>PostCard</div>
+    <div className="post-card">
+        <div className="flex-between">
+            <div className="flex items-center gap-3">
+
+            </div>
+        </div>
+    </div>
   )
 }
 
