@@ -17,15 +17,19 @@ const PostCard = ({ post }: PostCardProps) => {
                 />
               </Link>
 
-              <div className="flex flex-col ">
-                <p>
-                  {post.creator.name}
-                </p>
-              </div>
-              <div>
-                <p>
-                  {post.$createdAt}
-                </p>
+                <div className="flex flex-col ">
+                  <p className="base-medium lg:body-bold text-light-1">
+                    {post.creator.name}
+                  </p>  
+                <div className="flex-center">
+                  <p>
+                    {post.$createdAt}
+                  </p>
+                  -
+                  <p>
+                    {post.location}
+                  </p>
+                </div>
               </div>
             </div>
         </div>
