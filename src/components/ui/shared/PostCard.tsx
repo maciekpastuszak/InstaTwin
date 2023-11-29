@@ -16,6 +16,17 @@ const PostCard = ({ post }: PostCardProps) => {
                   className="rounded-full w-12 lg:h-12"
                 />
               </Link>
+
+              <div className="flex flex-col ">
+                <p>
+                  {post.creator.name}
+                </p>
+              </div>
+              <div>
+                <p>
+                  {post.$createdAt}
+                </p>
+              </div>
             </div>
         </div>
     </div>
