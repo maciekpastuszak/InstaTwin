@@ -15,7 +15,9 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
                 width={20} 
                 height={20}
                 onClick={() => {}}
-                className="cursor-pointer" />
+                className="cursor-pointer" 
+            />
+            <p className="small-medium lg:base-medium">0</p>
         </div>
     </div>
   )
