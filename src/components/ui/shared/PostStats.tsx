@@ -1,6 +1,11 @@
-import React from 'react'
+import { Models } from "appwrite"
 
-const PostStats = () => {
+type PostStatsProps = {
+    post: Models.Document;
+    userid: string;
+}
+
+const PostStats = ({ post, userId }: PostStatsProps) => {
   return (
     <div>PostStats</div>
   )
