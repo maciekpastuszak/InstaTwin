@@ -23,7 +23,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
         <div className="flex gap-2">
             <img 
                 src="/assets/icons/save.svg" 
-                alt="like" 
+                alt="save" 
                 width={20} 
                 height={20}
                 onClick={() => {}}
