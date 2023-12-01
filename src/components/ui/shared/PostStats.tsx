@@ -7,7 +7,11 @@ type PostStatsProps = {
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
   return (
-    <div>PostStats</div>
+    <div className="flex justify-between items-center z-20">
+        <div className="flex gap-2 mr-5">
+
+        </div>
+    </div>
   )
 }
 
