@@ -94,45 +94,46 @@ export async function signOutAccount() {
 
 export async function createPost(post: INewPost) {
     try {
-        //upload image to storage
-        const uploadedFile = await uploadFile(post.file[0]);
-    
-        if(!uploadedFile) throw Error;
-
-        //get file url
-        const fileUrl = getFilePreview(uploadedFile.$id);
-
-        if (!fileUrl) {
-            deleteFile(uploadedFile.$id);
-            throw Error;
+      // Upload file to appwrite storage
+      const uploadedFile = await uploadFile(post.file[0]);
+  
+      if (!uploadedFile) throw Error;
+  
+      // Get file url
+      const fileUrl = getFilePreview(uploadedFile.$id);
+      if (!fileUrl) {
+        await deleteFile(uploadedFile.$id);
+        throw Error;
+      }
+  
+      // Convert tags into array
+      const tags = post.tags?.replace(/ /g, "").split(",") || [];
+  
+      // Create post
+      const newPost = await databases.createDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.postCollectionId,
+        ID.unique(),
+        {
+          creator: post.userId,
+          caption: post.caption,
+          imageUrl: fileUrl,
+          imageId: uploadedFile.$id,
+          location: post.location,
+          tags: tags,
         }
-        // Convert tags in an array
-        const tags = post.tags?.replace(/ /g,'').split(',') || [];
-
-        //save post to db
-        const newPost = await databases.createDocument(
-            appwriteConfig.databaseId,
-            appwriteConfig.postCollectionId,
-            ID.unique(),
-            {
-                creator: post.userId,
-                caption: post.caption,
-                imageUrl: uploadedFile.$id,
-                location: post.location,
-                tags: tags
-            }
-        )
-
-        if(!newPost) {
-            await deleteFile(uploadedFile.$id)
-            throw Error;
-        }
-
-        return newPost
+      );
+  
+      if (!newPost) {
+        await deleteFile(uploadedFile.$id);
+        throw Error;
+      }
+  
+      return newPost;
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-}
+  }
 
 export async function uploadFile(file: File) {
     try {
