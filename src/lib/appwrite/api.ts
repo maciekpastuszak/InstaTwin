@@ -190,6 +190,14 @@ export async function getRecentPosts() {
 
 export async function likePost(postId: string, likesArray: string[]) {
     try {
+      const updatedPost = await databases.updateDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.postCollectionId,
+        postId,
+        {
+          likes: likesArray,
+        }
+      );
 
     } catch (error) {
       console.log(error);
