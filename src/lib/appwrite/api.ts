@@ -199,7 +199,7 @@ export async function likePost(postId: string, likesArray: string[]) {
         }
       );
   
-      if (updatedPost) throw Error;
+      if (!updatedPost) throw Error;
   
       return updatedPost;
     } catch (error) {
