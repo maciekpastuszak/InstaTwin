@@ -187,3 +187,11 @@ export async function getRecentPosts() {
 
     return posts;
 }
+
+export async function likePost() {
+    try {
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
