@@ -188,7 +188,7 @@ export async function getRecentPosts() {
     return posts;
 }
 
-export async function likePost() {
+export async function likePost(postId: string, likesArray: string[]) {
     try {
 
     } catch (error) {
