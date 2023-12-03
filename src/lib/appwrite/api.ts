@@ -227,21 +227,17 @@ export async function likePost(postId: string, likesArray: string[]) {
     }
   }
 
-  export async function deleteSavedPost(postId: string, userId: string) {
+  export async function deleteSavedPost(savedRecordId: string) {
     try {
-      const updatedPost = await databases.createDocument(
+      const statusCode = await databases.deleteDocument(
         appwriteConfig.databaseId,
         appwriteConfig.savesCollectionId,
-        ID.unique(),
-        {
-            user: userId,
-            post: postId,
-        }
+        savedRecordId,
       );
   
-      if (!updatedPost) throw Error;
+      if (!statusCode) throw Error;
   
-      return updatedPost;
+      return {staus: 'ok'};
     } catch (error) {
       console.log(error);
     }
