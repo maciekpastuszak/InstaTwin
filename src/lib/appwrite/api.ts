@@ -237,7 +237,7 @@ export async function likePost(postId: string, likesArray: string[]) {
   
       if (!statusCode) throw Error;
   
-      return {staus: 'ok'};
+      return {status: 'ok'};
     } catch (error) {
       console.log(error);
     }
