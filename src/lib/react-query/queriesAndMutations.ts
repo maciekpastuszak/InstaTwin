@@ -53,6 +53,11 @@ export const useLikedPost = () => {
 
     return useMutation({
         mutationFn: ({postId, likesArray }: {postId: string; likesArray: string[] }) =>
-            likePost(postId, likesArray)
+            likePost(postId, likesArray), 
+            onSuccess: (data) => {
+                queryClient.invalidateQueries({
+                    queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id]
+                })
+            }
     })
 }
