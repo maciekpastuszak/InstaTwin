@@ -58,6 +58,9 @@ export const useLikedPost = () => {
                 queryClient.invalidateQueries({
                     queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id]
                 })
+                queryClient.invalidateQueries({
+                    queryKey: [QUERY_KEYS.GET_RECENT_POSTS, data?.$id]
+                })
             }
     })
 }
