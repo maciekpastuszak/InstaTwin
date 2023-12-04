@@ -48,7 +48,7 @@ export const useGetRecentPosts = () => {
     })
 }
 
-export const useLikedPost = () => {
+export const useLikePost = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
@@ -70,3 +70,4 @@ export const useLikedPost = () => {
             }
     })
 }
+
