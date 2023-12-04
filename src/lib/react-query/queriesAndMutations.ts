@@ -5,7 +5,7 @@ useMutation,
 useQueryClient,
 useInfiniteQuery,
 } from '@tanstack/react-query'
-import { createPost, createUserAccount, getRecentPosts, likePost, signInAccount, signOutAccount } from '../appwrite/api'
+import { createPost, createUserAccount, getRecentPosts, likePost, savePost, signInAccount, signOutAccount } from '../appwrite/api'
 import { QUERY_KEYS } from './queryKeys'
 
 export const useCreateUserAccount = () => {
@@ -75,12 +75,9 @@ export const useSavePost = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: ({postId, likesArray }: {postId: string; likesArray: string[] }) =>
-            likePost(postId, likesArray), 
+        mutationFn: ({postId, userId }: {postId: string; userId: string }) =>
+            savePost(postId, userId), 
             onSuccess: (data) => {
-                queryClient.invalidateQueries({
-                    queryKey: [QUERY_KEYS.GET_POST_BY_ID, data?.$id]
-                })
                 queryClient.invalidateQueries({
                     queryKey: [QUERY_KEYS.GET_RECENT_POSTS]
                 })
