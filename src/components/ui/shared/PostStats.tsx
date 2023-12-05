@@ -1,5 +1,6 @@
 import { useDeleteSavedPost, useLikePost, useSavePost } from "@/lib/react-query/queriesAndMutations";
 import { Models } from "appwrite"
+import { useState, useEffect } from "react";
 
 type PostStatsProps = {
     post: Models.Document;
@@ -7,9 +8,15 @@ type PostStatsProps = {
 }
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
+  const likesList = post.likes.map((user: Models.Document) => user.$id)
+  
+  const [likes, setLikes] = useState(likesList);
+  
   const { mutate: likePost } = useLikePost();
   const { mutate: savePost } = useSavePost();
   const { mutate: deleteSavedPost } = useDeleteSavedPost();
+
+  const { data: currentUser } = useUserContext();
   
     return (
     <div className="flex justify-between items-center z-20">
