@@ -1,3 +1,4 @@
+import { useLikePost } from "@/lib/react-query/queriesAndMutations";
 import { Models } from "appwrite"
 
 type PostStatsProps = {
@@ -6,7 +7,11 @@ type PostStatsProps = {
 }
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
-  return (
+  const { mutate: likePost } = useLikePost();
+  const { mutate: savePost } = useLikePost();
+  const { mutate: deleteSavedPost } = useLikePost();
+  
+    return (
     <div className="flex justify-between items-center z-20">
         <div className="flex gap-2 mr-5">
             <img 
