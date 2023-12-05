@@ -43,11 +43,15 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
         <div className="flex gap-2">
             <img 
-                src="/assets/icons/save.svg" 
+                src={`${isSaved
+                    ? "/assets/icons/saved.svg" 
+                    : "/assets/icons/save.svg" 
+                    }
+                `}
                 alt="save" 
                 width={20} 
                 height={20}
-                onClick={() => {}}
+                onClick={handleSavePost}
                 className="cursor-pointer" 
             />
         </div>
