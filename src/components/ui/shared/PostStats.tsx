@@ -1,11 +1,12 @@
+import { useUserContext } from "@/context/AuthContext";
 import { useDeleteSavedPost, useLikePost, useSavePost } from "@/lib/react-query/queriesAndMutations";
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 type PostStatsProps = {
     post: Models.Document;
-    userid: string;
+    userId: string;
 }
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
@@ -20,7 +21,9 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
   const { data: currentUser } = useUserContext();
   
-  const handleLikePost = () => {}
+  const handleLikePost = (e: React.MouseEvent) => {
+      e.stopPropagation()
+  }
 
   const handleSavePost = () => {}
 
