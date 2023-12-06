@@ -23,6 +23,19 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   
   const handleLikePost = (e: React.MouseEvent) => {
       e.stopPropagation()
+
+      let newLikes = [...likes];
+
+      const hasLiked = newLikes.includes(userId);
+
+      if(hasLiked) {
+        newLikes = newLikes.filter((id) => id !== userId);
+      } else {
+        newLikes.push(userId);
+      }
+
+      setLikes(newLikes);
+      likePost({postId: post.$id, likesArray: newLikes })
   }
 
   const handleSavePost = () => {}
