@@ -2,6 +2,7 @@
 import { useDeleteSavedPost, useGetCurrentUser, useLikePost, useSavePost } from "@/lib/react-query/queriesAndMutations";
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite"
+import { Loader } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
 type PostStatsProps = {
@@ -16,8 +17,8 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const [isSaved, setIsSaved] = useState(false);
   
   const { mutate: likePost } = useLikePost();
-  const { mutate: savePost } = useSavePost();
-  const { mutate: deleteSavedPost } = useDeleteSavedPost();
+  const { mutate: savePost, isPending: isSavingPost } = useSavePost();
+  const { mutate: deleteSavedPost, isPending: isDeletingSaved } = useDeleteSavedPost();
 
   const { data: currentUser } = useGetCurrentUser();
   
@@ -73,7 +74,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
         </div>
 
         <div className="flex gap-2">
-            <img 
+            {isSavingPost || isDeletingSaved ? <Loader /> : <img 
                 src={isSaved
                     ? "/assets/icons/saved.svg" 
                     : "/assets/icons/save.svg" 
@@ -83,7 +84,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
                 height={20}
                 onClick={handleSavePost}
                 className="cursor-pointer" 
-            />
+            />}
         </div>
     </div>
   )
