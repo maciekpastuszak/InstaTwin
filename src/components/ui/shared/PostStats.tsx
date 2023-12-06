@@ -45,10 +45,10 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     if(savedPostRecord){
         setIsSaved(false);
         deleteSavedPost(savedPostRecord.$id);
+    } else {
+        savePost({postId: post.$id, userId});
+        setIsSaved(true)
     }
-
-    setLikes(newLikes);
-    likePost({postId: post.$id, likesArray: newLikes })
   }
 
     return (
