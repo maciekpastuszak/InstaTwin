@@ -19,7 +19,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
   const { mutate: savePost } = useSavePost();
   const { mutate: deleteSavedPost } = useDeleteSavedPost();
 
-  const { data: currentUser } = useUserContext();
+  const { data: currentUser } = useGetCurrentUser();
   
   const handleLikePost = (e: React.MouseEvent) => {
       e.stopPropagation()
@@ -74,7 +74,6 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
                     ? "/assets/icons/saved.svg" 
                     : "/assets/icons/save.svg" 
                     }
-                }
                 alt="save" 
                 width={20} 
                 height={20}
