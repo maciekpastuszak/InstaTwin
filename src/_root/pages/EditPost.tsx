@@ -1,6 +1,11 @@
 import PostForm from "@/components/ui/forms/PostForm"
+import { useGetPostById } from "@/lib/react-query/queriesAndMutations";
+import { useParams } from "react-router-dom";
 
 const EditPost = () => {
+  const { id } = useParams();
+  const { data: post, isPending } = useGetPostById(id || '');
+
   return (
     <div className="flex flex-1">
       <div className="common-container">
@@ -10,7 +15,7 @@ const EditPost = () => {
           width={36}
           height={36} 
           />
-          <h2 className="h3-bold md:h2-bold text-left w-full">Create Post</h2>
+          <h2 className="h3-bold md:h2-bold text-left w-full">Edit Post</h2>
         </div>
 
         <PostForm />
