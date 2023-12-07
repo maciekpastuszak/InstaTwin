@@ -1,4 +1,5 @@
 import PostForm from "@/components/ui/forms/PostForm"
+import Loader from "@/components/ui/shared/Loader";
 import { useGetPostById } from "@/lib/react-query/queriesAndMutations";
 import { useParams } from "react-router-dom";
 
@@ -6,6 +7,8 @@ const EditPost = () => {
   const { id } = useParams();
   const { data: post, isPending } = useGetPostById(id || '');
 
+  if(isPending) return <Loader />
+  
   return (
     <div className="flex flex-1">
       <div className="common-container">
