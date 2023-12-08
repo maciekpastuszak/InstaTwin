@@ -292,26 +292,25 @@ export async function likePost(postId: string, likesArray: string[]) {
       const tags = post.tags?.replace(/ /g, "").split(",") || [];
   
       // Create post
-      const newPost = await databases.createDocument(
+      const updatedPost = await databases.updateDocument(
         appwriteConfig.databaseId,
         appwriteConfig.postCollectionId,
-        ID.unique(),
+        post.postId,
         {
-          creator: post.userId,
           caption: post.caption,
-          imageUrl: fileUrl,
-          imageId: uploadedFile.$id,
+          imageUrl: image.imageurl,
+          imageId: image.$id,
           location: post.location,
           tags: tags,
         }
       );
   
-      if (!newPost) {
-        await deleteFile(uploadedFile.$id);
+      if (!updatePost) {
+        await deleteFile(post.imageId);
         throw Error;
       }
   
-      return newPost;
+      return updatePost;
     } catch (error) {
       console.log(error);
     }
