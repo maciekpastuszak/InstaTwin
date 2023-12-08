@@ -258,32 +258,27 @@ export async function likePost(postId: string, likesArray: string[]) {
   }
 
   export async function updatePost(post: IUpdatePost) {
+    const hasFileToUpdate = post.file.length > 0;
+  
     try {
-      const hasFileToUpdate = post.file.length > 0;
-
-      try {
-        let image = {
-          imageUrl: post.imageUrl,
-          imageId: post.imageId,
-        }
-      } catch (error) {
-        console.log(error)
-      }
-
-      if(hasFileToUpdate){
-        // Upload file to appwrite storage
-        
+      let image = {
+        imageUrl: post.imageUrl,
+        imageId: post.imageId,
+      };
+  
+      if (hasFileToUpdate) {
+        // Upload new file to appwrite storage
         const uploadedFile = await uploadFile(post.file[0]);
         if (!uploadedFile) throw Error;
-
-        // Get file url
+  
+        // Get new file url
         const fileUrl = getFilePreview(uploadedFile.$id);
         if (!fileUrl) {
           await deleteFile(uploadedFile.$id);
           throw Error;
         }
-
-        image = {...image, imageUrl: fileUrl, imageId: uploadedFile.$id}
+  
+        image = { ...image, imageUrl: fileUrl, imageId: uploadedFile.$id };
       }
       
   
