@@ -320,7 +320,13 @@ export async function likePost(postId: string, likesArray: string[]) {
     if(!postId || !imageId) throw Error;
 
     try {
-      
+      await databases.deleteDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.postCollectionId,
+        postId
+      )
+
+      return { status: 'ok' }
     } catch (error) {
       console.log(error)
     }
