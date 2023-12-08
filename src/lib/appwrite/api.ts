@@ -315,3 +315,13 @@ export async function likePost(postId: string, likesArray: string[]) {
       console.log(error);
     }
   }
+
+  export async function deletePost(postId: string, imageId: string) {
+    if(!postId || !imageId) throw Error;
+
+    try {
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
