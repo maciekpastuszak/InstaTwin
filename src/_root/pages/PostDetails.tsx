@@ -11,6 +11,7 @@ const PostDetails = () => {
     <div className="post_details-container">
       {isPending ? <Loader /> : (
         <div className="post_details-card">
+          <img src={post?.imageUrl} alt="post" className="post_details-img"/>
           <div className="flex items-center gap-3">
               <Link to={`/profile/${post?.creator.$id}`}>
                 <img src={post?.creator?.imageUrl || 'assets/icons/profile-placeholder.svg'} 
