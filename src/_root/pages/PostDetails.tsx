@@ -12,7 +12,7 @@ const PostDetails = () => {
       {isPending ? <Loader /> : (
         <div className="post_details-card">
           <div className="flex-between w-full">
-          <Link to={`/profile/${post?.creator.$id}`}>
+          <Link to={`/profile/${post?.creator.$id}`} className="flex items-center gap-3">
                 <img src={post?.creator?.imageUrl || 'assets/icons/profile-placeholder.svg'} 
                   alt="creator" 
                   className="rounded-full w-12 lg:h-12"
