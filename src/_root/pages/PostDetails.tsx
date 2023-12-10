@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import Loader from '@/components/ui/shared/Loader';
 import { useUserContext } from '@/context/AuthContext';
 import { useGetPostById } from '@/lib/react-query/queriesAndMutations'
@@ -9,6 +10,7 @@ const PostDetails = () => {
   const { data: post, isPending } = useGetPostById(id || '');
   const { user } = useUserContext();
 
+  const handleDetelePost = () => {}
   return (
     <div className="post_details-container">
       {isPending ? <Loader /> : (
@@ -41,6 +43,14 @@ const PostDetails = () => {
                 <Link to={`/update-post/${post?.$id}`} className={`${user.id !== post?.creator.$id && 'hidden'}`}>
                   <img src="/assets/icons/edit.svg" alt="edit" height={24} width={24} />
                 </Link>
+
+                <Button
+                  onClick={handleDeletePost}
+                  variant="ghost"
+                  className={`ghost_details-delete_btn ${user.id !== post?.creator.$id && 'hidden'}`}
+                >
+
+                </Button>
               </div>
           </div>
           <img src={post?.imageUrl} alt="post" className="post_details-img"/>
