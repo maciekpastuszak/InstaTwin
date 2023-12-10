@@ -1,4 +1,5 @@
 import Loader from '@/components/ui/shared/Loader';
+import { useUserContext } from '@/context/AuthContext';
 import { useGetPostById } from '@/lib/react-query/queriesAndMutations'
 import { formatDateString } from '@/lib/utils';
 import { Link, useParams } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 const PostDetails = () => {
   const { id } = useParams()
   const { data: post, isPending } = useGetPostById(id || '');
+  const { user } = useUserContext();
 
   return (
     <div className="post_details-container">
@@ -36,7 +38,7 @@ const PostDetails = () => {
               </Link>
 
               <div className="flex-cener gap-4">
-                <Link to={`/update-post/${post?.$id}`}>
+                <Link to={`/update-post/${post?.$id}`} className={`${user.id !== post?.creator.$id && 'hidden'}`}>
                   <img src="/assets/icons/edit.svg" alt="" />
                 </Link>
               </div>
