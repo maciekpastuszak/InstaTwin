@@ -34,6 +34,12 @@ const PostDetails = () => {
                 </div>
               </div>
               </Link>
+
+              <div className="flex-cener gap-4">
+                <Link to={`/update-post/${post?.$id}`}>
+                  <img src="/assets/icons/edit.svg" alt="" />
+                </Link>
+              </div>
           </div>
           <img src={post?.imageUrl} alt="post" className="post_details-img"/>
           <div className="post_details-info">
