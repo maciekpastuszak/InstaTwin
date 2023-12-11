@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Loader from '@/components/ui/shared/Loader';
+import PostStats from '@/components/ui/shared/PostStats';
 import { useUserContext } from '@/context/AuthContext';
 import { useGetPostById } from '@/lib/react-query/queriesAndMutations'
 import { formatDateString } from '@/lib/utils';
@@ -69,6 +70,10 @@ const PostDetails = () => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="w-full">
+            <PostStats post={post} userId={user.id} />
           </div>
           
           {/* <img src={post?.imageUrl} alt="post" className="post_details-img"/>
