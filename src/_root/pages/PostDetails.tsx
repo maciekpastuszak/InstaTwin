@@ -60,7 +60,7 @@ const PostDetails = () => {
           </div>
           <hr className="border w-full border-dark-4/80" />
 
-          <div className="small-medium lg:base-medium py-5">
+          <div className="flex flex-col flex-1 w-full small-medium lg:base-regular">
             <p>{post?.caption}</p>
             <ul>
               {post?.tags.map((tag: string) => (
