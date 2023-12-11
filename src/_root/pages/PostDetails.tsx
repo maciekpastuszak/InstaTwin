@@ -58,10 +58,12 @@ const PostDetails = () => {
                 </Button>
               </div>
           </div>
-          <img src={post?.imageUrl} alt="post" className="post_details-img"/>
+          <hr className="border w-full border-dark-4/80" />
+          
+          {/* <img src={post?.imageUrl} alt="post" className="post_details-img"/>
           <div className="post_details-info">
 
-            </div>
+            </div> */}
         </div>
       )}
     </div>
