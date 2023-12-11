@@ -2,7 +2,11 @@ import React from 'react'
 
 const Explore = () => {
   return (
-    <div>Explore</div>
+    <div className="explore-container">
+      <div className="explore-inner_container">
+
+      </div>
+    </div>
   )
 }
 
