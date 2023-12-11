@@ -59,6 +59,17 @@ const PostDetails = () => {
               </div>
           </div>
           <hr className="border w-full border-dark-4/80" />
+
+          <div className="small-medium lg:base-medium py-5">
+            <p>{post?.caption}</p>
+            <ul>
+              {post?.tags.map((tag: string) => (
+                <li key={tag} className="text-light-3">
+                  #{tag}
+                </li>
+              ))}
+            </ul>
+          </div>
           
           {/* <img src={post?.imageUrl} alt="post" className="post_details-img"/>
           <div className="post_details-info">
