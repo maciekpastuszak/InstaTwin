@@ -15,6 +15,7 @@ const Explore = () => {
             placeholder="search"
             className="explore-search"
             value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
       </div>
