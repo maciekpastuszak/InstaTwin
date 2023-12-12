@@ -4,6 +4,10 @@ import { Input } from '@/components/ui/input'
 const Explore = () => {
   const [searchValue, setSearchValue] = useState('')
 
+  const posts = [];
+  const shouldShowSearchResults = searchValue !== '';
+  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item.documents.length === 0)
+
   return (
     <div className="explore-container">
       <div className="explore-inner_container">
@@ -26,6 +30,10 @@ const Explore = () => {
           <p className="small-medium md:base-medium text-light-2">All</p>
           <img src="/assets/icons/filter.svg" width={20} height={20} alt="filter" />
         </div>
+      </div>
+
+      <div className="flex flex-wrap gap-9 w-full max-w-5xl">
+
       </div>
     </div>
   )
