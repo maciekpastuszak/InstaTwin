@@ -1,6 +1,7 @@
 import { INewPost, INewUser, IUpdatePost } from "@/types";
 import { ID, Query } from "appwrite";
 import { account, appwriteConfig, avatars, databases, storage } from "./config";
+import { error } from "console";
 
 export async function createUserAccount(user: INewUser) {
     try {
@@ -340,6 +341,10 @@ export async function likePost(postId: string, likesArray: string[]) {
         appwriteConfig.postCollectionId,
         queries
       )
+
+      if(!posts) throw Error;
+
+      return posts;
     } catch (error) {
       console.log(error)
     }
