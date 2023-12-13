@@ -349,3 +349,25 @@ export async function likePost(postId: string, likesArray: string[]) {
       console.log(error)
     }
   }
+
+  export async function searchPosts(searchTerm: string) {
+    const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(10)]
+
+    if(pageParam) {
+      queries.push(Query.cursorAfter(pageParam.toString()))
+    }
+
+    try {
+      const posts = await databases.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.postCollectionId,
+        queries
+      )
+
+      if(!posts) throw Error;
+
+      return posts;
+    } catch (error) {
+      console.log(error)
+    }
+  }
