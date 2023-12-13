@@ -294,8 +294,8 @@ export async function likePost(postId: string, likesArray: string[]) {
         post.postId,
         {
           caption: post.caption,
-          imageUrl: image.imageurl,
-          imageId: image.$id,
+          imageUrl: image.imageUrl,
+          imageId: image.imageId,
           location: post.location,
           tags: tags,
         }
