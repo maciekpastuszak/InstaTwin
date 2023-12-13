@@ -326,3 +326,7 @@ export async function likePost(postId: string, likesArray: string[]) {
       console.log(error)
     }
   }
+
+  export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
+    const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(20)]
+  }
