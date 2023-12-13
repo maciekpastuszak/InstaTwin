@@ -351,17 +351,12 @@ export async function likePost(postId: string, likesArray: string[]) {
   }
 
   export async function searchPosts(searchTerm: string) {
-    const queries: any[] = [Query.orderDesc('$updatedAt'), Query.limit(10)]
-
-    if(pageParam) {
-      queries.push(Query.cursorAfter(pageParam.toString()))
-    }
 
     try {
       const posts = await databases.listDocuments(
         appwriteConfig.databaseId,
         appwriteConfig.postCollectionId,
-        queries
+        [Query.search('caption'), searchTerm]
       )
 
       if(!posts) throw Error;
