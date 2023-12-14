@@ -1,6 +1,11 @@
+import { Models } from 'appwrite'
 import React from 'react'
 
-const GridPostList = () => {
+type GridPostsListProps = {
+  post: Models.Document[]
+}
+
+const GridPostList = ({ posts }: GridPostsListProps) => {
   return (
     <div>GridPostList</div>
   )
