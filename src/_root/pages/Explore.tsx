@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import SearchResults from '@/components/ui/shared/SearchResults';
 import GridPostList from '@/components/ui/shared/GridPostList';
-import { useSearchPosts } from '@/lib/react-query/queriesAndMutations';
+import { useGetPosts, useSearchPosts } from '@/lib/react-query/queriesAndMutations';
 import useDebounce from '@/hooks/useDebounce';
 
 const Explore = () => {
+  const {data: posts, fetchNextPage, hasNextPage} = useGetPosts();
   const [searchValue, setSearchValue] = useState('');
 
   const debouncedValue = useDebounce(searchValue, 500);
 
   const { data: searchPosts, isFetching: isSearchFetching } = useSearchPosts(debouncedValue)
-  // const posts = [];
-  // const shouldShowSearchResults = searchValue !== '';
-  // const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item.documents.length === 0)
+
+  const shouldShowSearchResults = searchValue !== '';
+  const shouldShowPosts = !shouldShowSearchResults && posts.pages.every((item) => item.documents.length === 0)
 
   return (
     <div className="explore-container">
