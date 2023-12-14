@@ -1,3 +1,4 @@
+import { useUserContext } from '@/context/AuthContext'
 import { Models } from 'appwrite'
 import React from 'react'
 
@@ -6,8 +7,11 @@ type GridPostsListProps = {
 }
 
 const GridPostList = ({ posts }: GridPostsListProps) => {
+  const { user } = useUserContext();
   return (
-    <div>GridPostList</div>
+    <ul className="grid-container">
+      
+    </ul>
   )
 }
 
