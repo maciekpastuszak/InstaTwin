@@ -11,9 +11,9 @@ type SearchResultsProps = {
 const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultsProps) => {
   if(isSearchFetching) return <Loader />
 
-  if(searchedPosts.documents.length > 0) {
+  if(searchedPosts && searchedPosts.documents.length > 0) {
     return (
-      <GridPostList posts={searchPosts.documents} />
+      <GridPostList posts={searchedPosts.documents} />
     )
   }
 
