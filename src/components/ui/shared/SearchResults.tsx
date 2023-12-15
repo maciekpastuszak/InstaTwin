@@ -1,6 +1,11 @@
 import React from 'react'
 
-const SearchResults = () => {
+type SearchResultsProps = {
+  isSearchFetching: boolean;
+  searchedPosta: Models.Documents[];
+}
+
+const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultsProps) => {
   return (
     <div>SearchResults</div>
   )
