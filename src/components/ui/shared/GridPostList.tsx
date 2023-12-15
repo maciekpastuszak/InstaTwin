@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 type GridPostsListProps = {
-  post: Models.Document[]
+  posts: Models.Document[];
 }
 
 const GridPostList = ({ posts }: GridPostsListProps) => {
