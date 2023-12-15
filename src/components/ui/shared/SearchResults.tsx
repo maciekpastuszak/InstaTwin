@@ -1,8 +1,9 @@
+import { Models } from 'appwrite';
 import React from 'react'
 
 type SearchResultsProps = {
   isSearchFetching: boolean;
-  searchedPosta: Models.Documents[];
+  searchedPosts: Models.Document[];
 }
 
 const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultsProps) => {
