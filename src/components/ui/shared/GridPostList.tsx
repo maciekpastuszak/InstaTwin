@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom'
 
 type GridPostsListProps = {
   posts: Models.Document[];
+  showUser?: boolean;
+  showStats?: boolean;
 }
 
-const GridPostList = ({ posts }: GridPostsListProps) => {
+const GridPostList = ({ posts, showUser = true, showStats = true }: GridPostsListProps) => {
   const { user } = useUserContext();
   return (
     <ul className="grid-container">
