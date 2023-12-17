@@ -62,6 +62,12 @@ const Explore = () => {
           <GridPostList key={`page-${index}`} posts={item.documents} />
         ))}
       </div>
+
+      {hasNextPage && !searchValue && (
+        <div ref={ref} className="mt-10">
+          <Loader />
+        </div>
+      )}
     </div>
   )
 }
