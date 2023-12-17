@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input } from '@/components/ui/input'
 import SearchResults from '@/components/ui/shared/SearchResults';
 import GridPostList from '@/components/ui/shared/GridPostList';
 import { useGetPosts, useSearchPosts } from '@/lib/react-query/queriesAndMutations';
 import useDebounce from '@/hooks/useDebounce';
 import Loader from '@/components/ui/shared/Loader';
+import { useInView } from 'react-intersection-observer';
 
 const Explore = () => {
+  const {ref, inView} = useInView();
   const {data: posts, fetchNextPage, hasNextPage} = useGetPosts();
   const [searchValue, setSearchValue] = useState('');
 
