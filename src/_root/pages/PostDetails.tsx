@@ -11,7 +11,7 @@ const PostDetails = () => {
   const { data: post, isPending } = useGetPostById(id || '');
   const { user } = useUserContext();
 
-  const handleDetelePost = () => {}
+  const handleDeletePost = () => {}
   return (
     <div className="post_details-container">
       {isPending ? <Loader /> : (
@@ -51,7 +51,7 @@ const PostDetails = () => {
                   className={`ghost_details-delete_btn ${user.id !== post?.creator.$id && 'hidden'}`}
                 >
                     <img 
-                    src="assets/icons/delete.svg" 
+                    src="/assets/icons/delete.svg" 
                     alt="delete" 
                     width={24}
                     height={24}
