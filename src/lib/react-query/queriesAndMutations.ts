@@ -128,7 +128,6 @@ export const useGetPostById = (postId: string) => {
 
 export const useUpdatePost = () => {
     const queryClient = useQueryClient();
-
     return useMutation({
       mutationFn: (post: IUpdatePost) => updatePost(post),
       onSuccess: (data) => {
@@ -163,13 +162,13 @@ export const useUpdatePost = () => {
 
             return lastId;
         }
-    })
-  }
+    });
+  };
 
   export const useSearchPosts = (searchTerm: string) => {
     return useQuery({
-        queryKey: [QUERY_KEYS.SEARCH_POSTS, searchTerm],
-        queryFn: () => searchPosts(searchTerm),
-        enabled: !!searchTerm
-    })
-  }
+      queryKey: [QUERY_KEYS.SEARCH_POSTS, searchTerm],
+      queryFn: () => searchPosts(searchTerm),
+      enabled: !!searchTerm,
+    });
+  };
