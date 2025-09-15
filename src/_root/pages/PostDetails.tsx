@@ -3,8 +3,18 @@ import Loader from '@/components/ui/shared/Loader';
 import PostStats from '@/components/ui/shared/PostStats';
 import { useUserContext } from '@/context/AuthContext';
 import { useGetPostById } from '@/lib/react-query/queriesAndMutations'
-import { formatDateString } from '@/lib/utils';
 import { Link, useParams } from 'react-router-dom';
+
+// Utility function to format date
+const formatDate = (dateString?: string) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return date.toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
 
 const PostDetails = () => {
   const { id } = useParams()
@@ -20,7 +30,7 @@ const PostDetails = () => {
           <Link to={`/profile/${post?.creator.$id}`} className="flex items-center gap-3">
                 <img src={post?.creator?.imageUrl || 'assets/icons/profile-placeholder.svg'} 
                   alt="creator" 
-                  className="rounded-full w-8 h-8 lg:h-12 lg:h-12"
+                  className="rounded-full w-8 h-8 lg:h-12"
                 />
            
 
