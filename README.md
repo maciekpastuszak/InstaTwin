@@ -11,4 +11,5 @@ This is a code repository for a web application similar to Instagram, that allow
 
 ### [Live Site](https://teleant.maciejpastuszak.pl/)
 
-![Instagram clone](https://ibb.co/Lh12tgPD)
+![Instagram clone]
+<img width="720" height="346" alt="screenshot" src="https://github.com/user-attachments/assets/f8d1020a-b966-400b-976b-625632b5cb7f" />
